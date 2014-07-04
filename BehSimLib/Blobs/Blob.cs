@@ -9,13 +9,14 @@ using BehSimLib.Controlers;
 
 namespace BehSimLib.Blobs
 {
-    public enum BlobState { Standby, Moving, None };
+    public enum BlobState { Standby, Moving, MovingInDirection, None };
 
 
     public class Blob
     {
 #region Variables
         protected Vector2 position;
+        protected Vector2 destination;
         protected Color color = Color.White;
         protected float rotation = 0;
         protected float speed = 1.5f;
@@ -112,6 +113,7 @@ namespace BehSimLib.Blobs
         /// </summary>
         public void Move()
         {
+            //rands angle, then calcuates and sets velocity and rands timer
             blobState = BlobState.Moving;
             stateTimer = 0;
 
@@ -124,10 +126,30 @@ namespace BehSimLib.Blobs
             velocity.Y = (float)-Math.Cos(rotation) * speed;
         }
         /// <summary>
+        /// Moves blob to destination, finishes when reaches given destination
+        /// </summary>
+        /// <param name="Destination"></param>
+        public void MoveInDirection(Vector2 Destination)
+        {
+            //calculates distance to move in both diameters, then calculates velocity, and sets timer and velocity
+            destination = Destination;
+            Vector2 diference = new Vector2(Destination.X - position.X, Destination.Y - position.Y);
+            float distance = (float)Math.Sqrt(Math.Pow(diference.X, 2) + Math.Pow(diference.Y, 2));
+
+            int framesNeeded = (int)(distance / speed + 1);
+            velocity.X = diference.X / framesNeeded;
+            velocity.Y = diference.Y / framesNeeded;
+
+            currentActionTimer = framesNeeded;
+            blobState = BlobState.MovingInDirection;
+
+        }
+        /// <summary>
         /// Holds blob in current position. Duration 15-40 frames
         /// </summary>
         public void Standby()
         {
+            //sets velocity to zero and rands timer
             velocity = Vector2.Zero;
             blobState = BlobState.Standby;
             stateTimer = 0;
@@ -139,6 +161,7 @@ namespace BehSimLib.Blobs
         /// </summary>
         public void DoNothing()
         {
+            //sets velocity to zero and blobstate to none
             velocity = Vector2.Zero;
             blobState = BlobState.None;
         }
@@ -152,6 +175,13 @@ namespace BehSimLib.Blobs
 
             position += velocity;
 
+            //checks if blob reached it's desinaion
+            if(blobState == BlobState.MovingInDirection
+                && (int)position.X == (int)destination.X
+                && (int)position.Y == (int)destination.Y)
+            {
+                DoNothing();
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
