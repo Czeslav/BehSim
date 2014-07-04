@@ -1,0 +1,12 @@
+c:\users\grześ\documents\visual studio 2010\Projects\BehSim\BehSimLib\bin\x86\Debug\BehSimLib.dll
+c:\users\grześ\documents\visual studio 2010\Projects\BehSim\BehSimLib\bin\x86\Debug\BehSimLib.pdb
+c:\users\grześ\documents\visual studio 2010\Projects\BehSim\BehSimLib\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+c:\users\grześ\documents\visual studio 2010\Projects\BehSim\BehSimLib\obj\x86\Debug\BehSimLib.dll
+c:\users\grześ\documents\visual studio 2010\Projects\BehSim\BehSimLib\obj\x86\Debug\BehSimLib.pdb
+C:\Users\Grześ\documents\visual studio 2010\Projects\BehSim\BehSimLib\obj\x86\Debug\BehSimLib.csprojResolveAssemblyReference.cache
+C:\Users\Grześ\Documents\GitHub\BehSim\BehSimLib\bin\x86\Debug\BehSimLib.dll
+C:\Users\Grześ\Documents\GitHub\BehSim\BehSimLib\bin\x86\Debug\BehSimLib.pdb
+C:\Users\Grześ\Documents\GitHub\BehSim\BehSimLib\obj\x86\Debug\BehSimLib.csprojResolveAssemblyReference.cache
+C:\Users\Grześ\Documents\GitHub\BehSim\BehSimLib\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Grześ\Documents\GitHub\BehSim\BehSimLib\obj\x86\Debug\BehSimLib.dll
+C:\Users\Grześ\Documents\GitHub\BehSim\BehSimLib\obj\x86\Debug\BehSimLib.pdb

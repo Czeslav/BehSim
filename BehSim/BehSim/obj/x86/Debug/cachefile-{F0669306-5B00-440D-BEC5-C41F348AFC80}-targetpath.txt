@@ -1,0 +1,2 @@
+Content\blob.xnb
+Content\shadow.xnb

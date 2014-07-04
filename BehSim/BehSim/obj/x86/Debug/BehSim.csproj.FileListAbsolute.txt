@@ -1,0 +1,20 @@
+c:\users\grześ\documents\visual studio 2010\Projects\BehSim\BehSim\BehSim\bin\x86\Debug\Content\blob.xnb
+c:\users\grześ\documents\visual studio 2010\Projects\BehSim\BehSim\BehSim\bin\x86\Debug\BehSim.exe
+c:\users\grześ\documents\visual studio 2010\Projects\BehSim\BehSim\BehSim\bin\x86\Debug\BehSim.pdb
+c:\users\grześ\documents\visual studio 2010\Projects\BehSim\BehSim\BehSim\bin\x86\Debug\BehSimLib.dll
+c:\users\grześ\documents\visual studio 2010\Projects\BehSim\BehSim\BehSim\bin\x86\Debug\BehSimLib.pdb
+c:\users\grześ\documents\visual studio 2010\Projects\BehSim\BehSim\BehSim\obj\x86\Debug\BehSim.csprojResolveAssemblyReference.cache
+c:\users\grześ\documents\visual studio 2010\Projects\BehSim\BehSim\BehSim\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+c:\users\grześ\documents\visual studio 2010\Projects\BehSim\BehSim\BehSim\obj\x86\Debug\BehSim.exe
+c:\users\grześ\documents\visual studio 2010\Projects\BehSim\BehSim\BehSim\obj\x86\Debug\BehSim.pdb
+C:\Users\Grześ\documents\visual studio 2010\Projects\BehSim\BehSim\BehSim\bin\x86\Debug\Content\shadow.xnb
+C:\Users\Grześ\Documents\GitHub\BehSim\BehSim\BehSim\bin\x86\Debug\Content\blob.xnb
+C:\Users\Grześ\Documents\GitHub\BehSim\BehSim\BehSim\bin\x86\Debug\Content\shadow.xnb
+C:\Users\Grześ\Documents\GitHub\BehSim\BehSim\BehSim\bin\x86\Debug\BehSim.exe
+C:\Users\Grześ\Documents\GitHub\BehSim\BehSim\BehSim\bin\x86\Debug\BehSim.pdb
+C:\Users\Grześ\Documents\GitHub\BehSim\BehSim\BehSim\bin\x86\Debug\BehSimLib.dll
+C:\Users\Grześ\Documents\GitHub\BehSim\BehSim\BehSim\bin\x86\Debug\BehSimLib.pdb
+C:\Users\Grześ\Documents\GitHub\BehSim\BehSim\BehSim\obj\x86\Debug\BehSim.csprojResolveAssemblyReference.cache
+C:\Users\Grześ\Documents\GitHub\BehSim\BehSim\BehSim\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Grześ\Documents\GitHub\BehSim\BehSim\BehSim\obj\x86\Debug\BehSim.exe
+C:\Users\Grześ\Documents\GitHub\BehSim\BehSim\BehSim\obj\x86\Debug\BehSim.pdb
