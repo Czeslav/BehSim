@@ -9,7 +9,7 @@ using BehSimLib.Controlers;
 
 namespace BehSimLib.Blobs
 {
-    public enum BlobState { Standby, Moving, MovingInDirection, None };
+    public enum BlobState { Standby, Moving, MovingInDirection, MovingInOpositeDirection, None };
 
 
     public class Blob
@@ -104,6 +104,21 @@ namespace BehSimLib.Blobs
                 return false;
             }
         }
+        /// <summary>
+        /// Checks if blob does nothing and wants to do something
+        /// </summary>
+        /// <returns></returns>
+        public bool DoesNothing()
+        {
+            if (blobState == BlobState.None)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 #endregion
 
 #region Public Actions
@@ -140,9 +155,29 @@ namespace BehSimLib.Blobs
             velocity.X = diference.X / framesNeeded;
             velocity.Y = diference.Y / framesNeeded;
 
+            stateTimer = 0;
             currentActionTimer = framesNeeded;
             blobState = BlobState.MovingInDirection;
 
+        }
+        /// <summary>
+        /// Runs away from given point, lasts 25 frames
+        /// </summary>
+        /// <param name="Direction"></param>
+        public void MoveInOppositeDirection(Vector2 Point)
+        {
+            Vector2 diference = new Vector2(Point.X - position.X, Point.Y - position.Y);
+
+            diference = Vector2.Negate(diference);
+            float length = diference.Length();
+            float steps = length / speed;
+
+            velocity.X = diference.X / steps;
+            velocity.Y = diference.Y / steps;
+
+            stateTimer = 0;
+            currentActionTimer = 25;
+            blobState = BlobState.MovingInOpositeDirection;
         }
         /// <summary>
         /// Holds blob in current position. Duration 15-40 frames
@@ -182,7 +217,7 @@ namespace BehSimLib.Blobs
             {
                 DoNothing();
             }
-        }
+        }//update
 
         public void Draw(SpriteBatch spriteBatch)
         {

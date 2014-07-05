@@ -34,8 +34,7 @@ namespace BehSimLib.Controlers
         {
             foreach (var item in blobList)
             {
-                /*
-                 * OKAY behaviour, wanders around in panic
+                
                 if (item.BlobState == BlobState.None)
                 {
                     item.Standby();
@@ -50,7 +49,7 @@ namespace BehSimLib.Controlers
                 {
                     item.Move();
                 }
-                */
+                
 
                 item.Update();
             }
