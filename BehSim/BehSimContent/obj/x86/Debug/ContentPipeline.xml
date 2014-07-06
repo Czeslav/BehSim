@@ -17,7 +17,25 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Grześ\Documents\GitHub\BehSim\BehSim\BehSim\bin\x86\Debug\Content\shadow.xnb</Output>
-      <Time>2014-07-02T18:01:33.256477+02:00</Time>
+      <Time>2014-07-06T21:47:57.5423115+02:00</Time>
+    </Item>
+    <Item>
+      <Source>InfoBoxBackground.png</Source>
+      <Name>InfoBoxBackground</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Grześ\Documents\GitHub\BehSim\BehSim\BehSim\bin\x86\Debug\Content\InfoBoxBackground.xnb</Output>
+      <Time>2014-07-06T21:49:45.4336985+02:00</Time>
+    </Item>
+    <Item>
+      <Source>InfoBoxFont.spritefont</Source>
+      <Name>InfoBoxFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Grześ\Documents\GitHub\BehSim\BehSim\BehSim\bin\x86\Debug\Content\InfoBoxFont.xnb</Output>
+      <Time>2014-07-06T21:18:55.9031029+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

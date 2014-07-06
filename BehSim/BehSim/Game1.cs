@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
+using BehSimLib;
 using BehSimLib.Blobs;
 using BehSimLib.Controlers;
 
@@ -47,6 +48,8 @@ namespace BehSim
         {
             Blob.SetTexture(Content.Load<Texture2D>("blob"));
             Blob.SetViewFieldTexture(Content.Load<Texture2D>("shadow"));
+
+            InfoBox.Load(Content.Load<SpriteFont>("InfoBoxFont"), Content.Load<Texture2D>("InfoBoxBackground"));
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             testController = new BlobController();

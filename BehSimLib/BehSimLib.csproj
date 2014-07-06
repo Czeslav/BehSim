@@ -94,6 +94,7 @@
   <ItemGroup>
     <Compile Include="Blobs\Blob.cs" />
     <Compile Include="Controlers\BlobController.cs" />
+    <Compile Include="InfoBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

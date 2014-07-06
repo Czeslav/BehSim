@@ -18,3 +18,5 @@ C:\Users\Grześ\Documents\GitHub\BehSim\BehSim\BehSim\obj\x86\Debug\BehSim.cspro
 C:\Users\Grześ\Documents\GitHub\BehSim\BehSim\BehSim\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Grześ\Documents\GitHub\BehSim\BehSim\BehSim\obj\x86\Debug\BehSim.exe
 C:\Users\Grześ\Documents\GitHub\BehSim\BehSim\BehSim\obj\x86\Debug\BehSim.pdb
+C:\Users\Grześ\Documents\GitHub\BehSim\BehSim\BehSim\bin\x86\Debug\Content\InfoBoxBackground.xnb
+C:\Users\Grześ\Documents\GitHub\BehSim\BehSim\BehSim\bin\x86\Debug\Content\InfoBoxFont.xnb

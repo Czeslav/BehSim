@@ -15,6 +15,7 @@ namespace BehSimLib.Blobs
     public class Blob
     {
 #region Variables
+        protected Rectangle rectangle;
         protected Vector2 position;
         protected Vector2 destination;
         protected Color color = Color.White;
@@ -38,16 +39,16 @@ namespace BehSimLib.Blobs
         /// Number of frames blob can do what he does, setted when blobState changes
         /// </summary>
         protected int currentActionTimer = 0;
+
+        protected bool hovered;
+        protected InfoBox infoBox;
+        /// <summary>
+        /// Collection of InfoBoxRows, every row in it will be shown in InfoBox when blob will be hovered
+        /// </summary>
+        protected List<InfoBoxRow> infoBoxRows;
 #endregion
 
 #region Constructors
-        /// <summary>
-        /// Creates new blob at (30,30)
-        /// </summary>
-        public Blob()
-        {
-            position = new Vector2(30);
-        }
         /// <summary>
         /// Creates new blob at specified position
         /// </summary>
@@ -55,11 +56,13 @@ namespace BehSimLib.Blobs
         public Blob(Vector2 position)
         {
             this.position = position;
+            infoBox = new InfoBox();
+            rectangle = new Rectangle((int)position.X - texture.Width / 2, (int)position.Y - texture.Height / 2, (int)(scale * texture.Width)*2, (int)(scale * texture.Height)*2);
+            infoBoxRows = new List<InfoBoxRow>();
         }
 #endregion
 
-#region Private functions
-
+#region Protected functions
 #endregion
 
 #region Public Properties
@@ -71,6 +74,21 @@ namespace BehSimLib.Blobs
         {
             viewField = _texture;
         }
+        public Rectangle Rectangle
+        {
+            get { return rectangle; }
+        }
+        /// <summary>
+        /// Sets private $hovered variable to given
+        /// </summary>
+        /// <param name="hovered"></param>
+        public void SetHovered(bool hovered)
+        {
+            this.hovered = hovered;
+        }
+        /// <summary>
+        /// Returns BlobState enum showing what is currently this blob doing
+        /// </summary>
         public BlobState BlobState
         {
             get { return blobState; }
@@ -206,9 +224,10 @@ namespace BehSimLib.Blobs
 #region General Methods
         public void Update()
         {
+            hovered = false;
             stateTimer++;
-
             position += velocity;
+
 
             //checks if blob reached it's desinaion
             if(blobState == BlobState.MovingInDirection
@@ -216,16 +235,34 @@ namespace BehSimLib.Blobs
                 && (int)position.Y == (int)destination.Y)
             {
                 DoNothing();
-            }
+            }//if
+
+            //moves rectangle
+            rectangle.X = (int)position.X - texture.Width / 2;
+            rectangle.Y = (int)position.Y - texture.Width / 2;
+
+            //updates values for info box
+            infoBoxRows.Clear();
+            infoBoxRows.Add(new InfoBoxRow("Position", position));
+            infoBoxRows.Add(new InfoBoxRow("Velocity", velocity));
+
+            Debug.WriteLine(rectangle.ToString() + " " + position.ToString() + " " + velocity.ToString());
         }//update
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            //draw FieldOfView
             Rectangle viewf = new Rectangle((int)position.X - viewRange, (int)position.Y - viewRange, viewRange * 2, viewRange * 2);
             spriteBatch.Draw(viewField, viewf, Color.White);
-            //spriteBatch.Draw(texture, rec, color);
-            Vector2 origin = new Vector2(texture.Width * scale);
+            //draw blob
+            Vector2 origin = new Vector2(texture.Width /2 );
             spriteBatch.Draw(texture, position, null, color, 0, origin, scale, SpriteEffects.None, 0);
+            //draw InfoBox
+            if (hovered)
+            {
+                infoBox.Update(position, infoBoxRows);
+                infoBox.Draw(spriteBatch);
+            }
         }
 
 #endregion
