@@ -31,6 +31,7 @@ namespace BehSimLib.Blobs
         protected static Texture2D textBox;
 
         protected BlobState blobState = BlobState.None;
+        protected BlobState previousBlobState = BlobState.None;
         /// <summary>
         /// Number of frames lasted since last state change
         /// </summary>
@@ -74,6 +75,16 @@ namespace BehSimLib.Blobs
         {
             viewField = _texture;
         }
+        /// <summary>
+        /// Returns blob velocity
+        /// </summary>
+        public Vector2 Velocity
+        {
+            get { return velocity; }
+        }
+        /// <summary>
+        /// Returns rectangle, which is a bit bigger than blob
+        /// </summary>
         public Rectangle Rectangle
         {
             get { return rectangle; }
@@ -92,6 +103,13 @@ namespace BehSimLib.Blobs
         public BlobState BlobState
         {
             get { return blobState; }
+        }
+        /// <summary>
+        /// returns what blob just finished doing
+        /// </summary>
+        public BlobState PreviousBlobState
+        {
+            get { return previousBlobState; }
         }
         /// <summary>
         /// Number of frames since last blobState change
@@ -135,6 +153,47 @@ namespace BehSimLib.Blobs
             else
             {
                 return false;
+            }
+        }
+        /// <summary>
+        /// Checks if blob is close to screen border
+        /// </summary>
+        /// <param name="direction"></param>
+        /// <returns>True if is, Vector2 is set as direction to closest border point</returns>
+        public bool IsCloseToBorder(out Vector2 direction)
+        {
+            if (position.X > 20
+                && position.X < BlobController.ScreenDim.X - 20
+                && position.Y > 20
+                && position.Y < BlobController.ScreenDim.Y - 20)
+            {
+                direction = Vector2.Zero;
+                return false;
+            }
+            else
+            {
+                direction = new Vector2();
+                if (position.X < 20)
+                {
+                    direction.X = 0;
+                    direction.Y = position.Y;
+                }
+                if (position.X > BlobController.ScreenDim.X - 20)
+                {
+                    direction.X = BlobController.ScreenDim.X;
+                    direction.Y = position.Y;
+                }
+                if (position.Y < 20)
+                {
+                    direction.X = position.X;
+                    direction.Y = 0;
+                }
+                if (position.Y > BlobController.ScreenDim.Y - 20)
+                {
+                    direction.X = position.X;
+                    direction.Y = BlobController.ScreenDim.Y;
+                }
+                return true;
             }
         }
 #endregion
@@ -228,6 +287,13 @@ namespace BehSimLib.Blobs
             stateTimer++;
             position += velocity;
 
+            //checks if finished current action
+            if (currentActionTimer == stateTimer)
+            {
+                stateTimer = 0;
+                previousBlobState = blobState;
+                blobState = Blobs.BlobState.None;
+            }
 
             //checks if blob reached it's desinaion
             if(blobState == BlobState.MovingInDirection
@@ -245,8 +311,6 @@ namespace BehSimLib.Blobs
             infoBoxRows.Clear();
             infoBoxRows.Add(new InfoBoxRow("Position", position));
             infoBoxRows.Add(new InfoBoxRow("Velocity", velocity));
-
-            Debug.WriteLine(rectangle.ToString() + " " + position.ToString() + " " + velocity.ToString());
         }//update
 
         public void Draw(SpriteBatch spriteBatch)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 using Microsoft.Xna.Framework.Graphics;
 using BehSimLib.Blobs;
 using Microsoft.Xna.Framework;
@@ -14,6 +15,7 @@ namespace BehSimLib.Controlers
     {
         public static Random random;
         public static Rectangle MouseRec;
+        public static Vector2 ScreenDim;
         protected List<Blob> blobList;
         protected MouseState mouseState;
 
@@ -34,29 +36,42 @@ namespace BehSimLib.Controlers
 
         #region General methods
         /// <summary>
-        /// Enter your blob type behaviur in this function
+        /// Enter your blob type behaviur in this function DEFORE base.update
         /// </summary>
         public void Update()
         {
             //Enter behaviour below
             foreach (var item in blobList)
             {
-                
-                if (item.BlobState == BlobState.None)
+                if (item.DoesNothing()
+                    && item.PreviousBlobState == BlobState.None)
                 {
                     item.Standby();
                 }
-                if (item.BlobState == BlobState.Moving
-                    && item.SwitchAction())
-                {
-                    item.DoNothing();
-                }
-                if (item.BlobState == BlobState.Standby
-                    && item.SwitchAction())
+                if (item.DoesNothing()
+                    && item.PreviousBlobState == BlobState.Standby)
                 {
                     item.Move();
                 }
+                if (item.DoesNothing()
+                    && item.PreviousBlobState == BlobState.Moving)
+                {
+                    item.Standby();
+                }
                 
+                //must be, prevents blob from falling off screen
+                Vector2 dupa;
+                if (item.IsCloseToBorder(out dupa))
+                {
+                    item.DoNothing();
+                    item.MoveInOppositeDirection(dupa);
+                }
+                if (item.DoesNothing()
+                    && item.PreviousBlobState == BlobState.MovingInOpositeDirection)
+                {
+                    item.Move();
+                }
+                //end of must be
 
                 item.Update();
             }
